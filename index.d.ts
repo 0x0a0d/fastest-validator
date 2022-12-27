@@ -369,6 +369,16 @@ export interface RuleObject extends RuleCustom {
 	 * If set to a number, will throw if the number of props is greater than that number.
 	 */
 	maxProps?: number;
+	/**
+	 * validate object key and value
+	 */
+	entries?: {
+		key?: ValidationSchema
+		value?: ValidationSchema
+	} | {
+		key?: ValidationSchema
+		value?: ValidationSchema
+	}[]
 }
 
 export interface RuleObjectID extends RuleCustom {
