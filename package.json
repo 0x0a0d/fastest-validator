@@ -1,5 +1,5 @@
 {
-  "name": "fastest-validator",
+  "name": "@cylution/fastest-validator",
   "version": "1.16.0",
   "description": "The fastest JS validator library for NodeJS",
   "main": "index.js",
