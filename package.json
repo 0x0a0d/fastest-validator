@@ -1,6 +1,6 @@
 {
   "name": "@cylution/fastest-validator",
-  "version": "1.16.0",
+  "version": "1.16.0-22122701",
   "description": "The fastest JS validator library for NodeJS",
   "main": "index.js",
   "types": "dist/index.d.ts",
