@@ -1380,10 +1380,10 @@ describe("Test async mode", () => {
 		expect(res).toBe(true);
 
 		expect(custom1).toBeCalledTimes(1);
-		expect(custom1).toBeCalledWith("John", [], schema.name, "name", null, expect.anything());
+		expect(custom1).toBeCalledWith("John", [], schema.name, "name", null, expect.anything(), obj);
 
 		expect(custom2).toBeCalledTimes(1);
-		expect(custom2).toBeCalledWith("   john.doe  ", [], schema.username, "username", null, expect.anything());
+		expect(custom2).toBeCalledWith("   john.doe  ", [], schema.username, "username", null, expect.anything(), obj);
 	});
 
 	it("should give errors", async () => {
@@ -1507,7 +1507,7 @@ describe("allow metas starting with $$", () => {
 			expect(res).toBe(true);
 
 			expect(custom1).toBeCalledTimes(1);
-			expect(custom1).toBeCalledWith("John", [], schema.name, "name", null, expect.anything());
+			expect(custom1).toBeCalledWith("John", [], schema.name, "name", null, expect.anything(), obj);
 		});
 	});
 

@@ -110,9 +110,10 @@ describe("Test rule: array", () => {
 		const schema = { numbers: { type: "array", min: 1, custom: customFn, items: "number" } };
 		const check = v.compile(schema);
 
-		expect(check({ numbers: [1,2] })).toEqual(true);
+		let obj = { numbers: [1,2] };
+		expect(check(obj)).toEqual(true);
 		expect(customFn).toHaveBeenCalledTimes(1);
-		expect(customFn).toHaveBeenCalledWith([1,2], [], schema.numbers, "numbers", null, expect.any(Object));
+		expect(customFn).toHaveBeenCalledWith([1,2], [], schema.numbers, "numbers", null, expect.any(Object), obj);
 	});
 
 	it("should call custom checker for items", () => {
@@ -123,13 +124,14 @@ describe("Test rule: array", () => {
 		} } };
 		const check = v.compile(schema);
 
-		expect(check({ numbers: [1,2] })).toEqual(true);
+		let obj = { numbers: [1,2] };
+		expect(check(obj)).toEqual(true);
 		expect(customFn).toHaveBeenCalledTimes(1);
-		expect(customFn).toHaveBeenCalledWith([1,2], [], schema.numbers, "numbers", null, expect.any(Object));
+		expect(customFn).toHaveBeenCalledWith([1,2], [], schema.numbers, "numbers", null, expect.any(Object), obj);
 
 		expect(customFnItems).toHaveBeenCalledTimes(2);
-		expect(customFnItems).toHaveBeenNthCalledWith(1, 1, [], schema.numbers.items, "numbers[]", { numbers: [1,2] }, expect.any(Object));
-		expect(customFnItems).toHaveBeenNthCalledWith(2, 2, [], schema.numbers.items, "numbers[]", { numbers: [1,2] }, expect.any(Object));
+		expect(customFnItems).toHaveBeenNthCalledWith(1, 1, [], schema.numbers.items, "numbers[]", { numbers: [1,2] }, expect.any(Object), obj.numbers);
+		expect(customFnItems).toHaveBeenNthCalledWith(2, 2, [], schema.numbers.items, "numbers[]", { numbers: [1,2] }, expect.any(Object), obj.numbers);
 	});
 
 	describe("Test sanitization", () => {

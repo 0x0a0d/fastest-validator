@@ -25,7 +25,7 @@ describe("Test rule: multi", () => {
 
 		check("s");
 		expect(fn).toBeCalledTimes(1);
-		expect(fn).toBeCalledWith("s", [], schema.rules[0], "$$root", null, expect.any(Object));
+		expect(fn).toBeCalledWith("s", [], schema.rules[0], "$$root", null, expect.any(Object), undefined);
 	});
 
 	// it("should value equals to other field", () => {
@@ -213,6 +213,6 @@ describe("Test rule: multi", () => {
 
 		check("s");
 		expect(fn).toBeCalledTimes(1);
-		expect(fn).toBeCalledWith("s", [], schema.rules[0], "$$root", null, expect.any(Object));
+		expect(fn).toBeCalledWith("s", [], schema.rules[0], "$$root", null, expect.any(Object), undefined);
 	});
 });

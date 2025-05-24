@@ -81,7 +81,7 @@ describe("Test rule: custom v2", () => {
 
 		expect(check(10)).toEqual(true);
 		expect(checker).toHaveBeenCalledTimes(1);
-		expect(checker).toHaveBeenCalledWith(10, [], schema, "null", null, expect.any(Object));
+		expect(checker).toHaveBeenCalledWith(10, [], schema, "null", null, expect.any(Object), undefined);
 	});
 
 	it("should call custom checker", () => {
@@ -91,7 +91,7 @@ describe("Test rule: custom v2", () => {
 
 		expect(check({ weight: 10 })).toEqual(true);
 		expect(checker).toHaveBeenCalledTimes(1);
-		expect(checker).toHaveBeenCalledWith(10, [], schema.weight, "weight", { weight: 10 }, expect.any(Object));
+		expect(checker).toHaveBeenCalledWith(10, [], schema.weight, "weight", { weight: 10 }, expect.any(Object), undefined);
 	});
 
 	it("should handle returned errors", () => {
@@ -110,7 +110,7 @@ describe("Test rule: custom v2", () => {
 			message: "My error message. Expected: 3, actual: 4, field: weight"
 		}]);
 		expect(checker).toHaveBeenCalledTimes(1);
-		expect(checker).toHaveBeenCalledWith(10, expect.any(Array), schema.weight, "weight", { weight: 10 }, expect.any(Object));
+		expect(checker).toHaveBeenCalledWith(10, expect.any(Array), schema.weight, "weight", { weight: 10 }, expect.any(Object), undefined);
 	});
 
 	it("should call custom checker on $$root level", () => {
@@ -127,7 +127,7 @@ describe("Test rule: custom v2", () => {
 
 		expect(check({ name: "John" })).toEqual(true);
 		expect(checker).toHaveBeenCalledTimes(1);
-		expect(checker).toHaveBeenCalledWith({ name: "John" }, [], schema, "$$root", null, expect.any(Object));
+		expect(checker).toHaveBeenCalledWith({ name: "John" }, [], schema, "$$root", null, expect.any(Object), undefined);
 	});
 
 	it("should allow custom metas", async () => {
@@ -151,7 +151,7 @@ describe("Test rule: custom v2", () => {
 		expect(check({ name: "John" })).toEqual(true);
 		expect(checker).toHaveBeenCalledTimes(1);
 		//checkFunction should receive the unmodified schema
-		expect(checker).toHaveBeenCalledWith({ name: "John" }, [], schema, "$$root", null, expect.any(Object));
+		expect(checker).toHaveBeenCalledWith({ name: "John" }, [], schema, "$$root", null, expect.any(Object), undefined);
 	});
 
 });

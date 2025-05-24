@@ -132,7 +132,8 @@ describe("Test rule: tuple", () => {
 		const schema = { pair: { type: "tuple", custom: customFn } };
 		const check = v.compile(schema);
 
-		expect(check({ pair: [1, 2] })).toEqual(true);
+		let obj = { pair: [1, 2] };
+		expect(check(obj)).toEqual(true);
 		expect(customFn).toHaveBeenCalledTimes(1);
 		expect(customFn).toHaveBeenCalledWith(
 			[1, 2],
@@ -140,7 +141,8 @@ describe("Test rule: tuple", () => {
 			schema.pair,
 			"pair",
 			null,
-			expect.any(Object)
+			expect.any(Object),
+			obj
 		);
 	});
 
@@ -165,7 +167,8 @@ describe("Test rule: tuple", () => {
 		};
 		const check = v.compile(schema);
 
-		expect(check({ pair: ["Pizza", true] })).toEqual(true);
+		let obj = { pair: ["Pizza", true] };
+		expect(check(obj)).toEqual(true);
 		expect(customFn).toHaveBeenCalledTimes(1);
 		expect(customFn).toHaveBeenCalledWith(
 			["Pizza", true],
@@ -173,7 +176,8 @@ describe("Test rule: tuple", () => {
 			schema.pair,
 			"pair",
 			null,
-			expect.any(Object)
+			expect.any(Object),
+			obj
 		);
 
 		expect(customFnItems).toHaveBeenCalledTimes(2);
@@ -184,7 +188,8 @@ describe("Test rule: tuple", () => {
 			schema.pair.items[0],
 			"pair[0]",
 			{ pair: ["Pizza", true] },
-			expect.any(Object)
+			expect.any(Object),
+			undefined
 		);
 		expect(customFnItems).toHaveBeenNthCalledWith(
 			2,
@@ -193,7 +198,8 @@ describe("Test rule: tuple", () => {
 			schema.pair.items[1],
 			"pair[1]",
 			{ pair: ["Pizza", true] },
-			expect.any(Object)
+			expect.any(Object),
+			undefined
 		);
 	});
 
